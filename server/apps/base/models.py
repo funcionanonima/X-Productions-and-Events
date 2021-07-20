@@ -4,7 +4,7 @@ from django.db import models
 
 class BaseModel(models.Model):
 
-    id = models.autofield(primary_key=True)
+    id = models.AutoField(primary_key=True)
     state = models.BooleanField('Estado', default=True)
     created_date = models.DateField('Fecha de Creacion', auto_now=False, auto_now_add=True)
     modified_date = models.DateField('Fecha de Modificacion', auto_now=True, auto_now_add=False)
@@ -13,4 +13,4 @@ class BaseModel(models.Model):
     class Meta:
         abstract = True
         verbose_name= 'Modelo Base'
-        verbose_plural_name = 'Modelos Base'
+        verbose_name_plural = 'Modelos Base'

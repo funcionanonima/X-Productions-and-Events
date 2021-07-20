@@ -7,7 +7,7 @@ class Cities(BaseModel):
 
     class Meta:
         verbose_name = 'Ciudad'
-        verbose_plural_name = 'Ciudades'
+        verbose_name_plural = 'Ciudades'
 
     def __str__(self):
         return self.name

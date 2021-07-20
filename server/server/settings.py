@@ -40,14 +40,16 @@ BASE_APPS = [
 ]
 
 LOCAL_APPS = [
-
+    'apps.events',
+    'apps.members',
+    'apps.cities',
 ]
 
 THIRD_APPS=[
     'rest_framework'
 ]
 
-INSTALLED_APPS = BASE_APPS + LOCAL_APPS + THIRD_APPS
+INSTALLED_APPS = THIRD_APPS + BASE_APPS + LOCAL_APPS 
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

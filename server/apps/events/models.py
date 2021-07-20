@@ -10,7 +10,7 @@ class Category(BaseModel):
 
     class Meta:
         verbose_name = 'Categoría'
-        verbose_plural_name = 'Categorias'
+        verbose_name_plural = 'Categorias'
     
     def __str__(self):
         return self.name
@@ -23,7 +23,7 @@ class Event(BaseModel):
 
     class Meta:
         verbose_name = 'Evento'
-        verbose_plural_name = 'Eventos'
+        verbose_name_plural = 'Eventos'
 
     def __str__(self):
         return self.name    

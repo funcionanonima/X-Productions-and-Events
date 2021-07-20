@@ -13,7 +13,7 @@ class Member(BaseModel):
 
     class Meta:
         verbose_name = 'Miembro'
-        verbose_plural_name = 'Miembros'
+        verbose_name_plural = 'Miembros'
 
     def __str__(self):
         return self.name
