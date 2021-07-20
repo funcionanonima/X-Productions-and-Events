@@ -16,10 +16,10 @@ class Category(BaseModel):
         return self.name
 
 class Event(BaseModel):
-    category = models.ForeignKey(Category, onDelete=models.CASCADE, verbose_name='Categoría')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Categoría')
     name = models.CharField('Nombre', max_length=60, blank=False, null=False)
     date = models.DateTimeField()
-    place = models.ForeignKey(Cities, onDelete=models.CASCADE, verbose_name='Lugar')
+    place = models.ForeignKey(Cities, on_delete=models.CASCADE, verbose_name='Lugar')
 
     class Meta:
         verbose_name = 'Evento'
