@@ -6,4 +6,4 @@ class CitySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Cities
-        exclude = ['state']
+        exclude = ['state', 'created_date', 'modified_date', 'deleted_date',]
