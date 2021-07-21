@@ -2,7 +2,7 @@ from rest_framework.response import Response
 from rest_framework import generics, status
 
 from apps.base.api import GeneralListApiView
-from apps.events.api.serializers.general_serializers import CategorySerializer, EventSerializer, EventFormatedSerializer
+from apps.events.api.serializers.general_serializers import CategorySerializer, EventSerializer
 
 
 class CategoryListAPIView(GeneralListApiView):
@@ -11,10 +11,6 @@ class CategoryListAPIView(GeneralListApiView):
 
 class EventListAPIView(GeneralListApiView):
     serializer_class = EventSerializer
-
-
-class EventFormatedListAPIView(GeneralListApiView):
-    serializer_class = EventFormatedSerializer
 
 
 class EventCreateAPIView(generics.CreateAPIView):
