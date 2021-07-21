@@ -1,7 +1,6 @@
 from rest_framework import serializers
 
 from apps.events.models import Event, Category
-from apps.members.api.serializers.general_serializers import MemberSerializer
 
 
 class EventSerializer(serializers.ModelSerializer):
