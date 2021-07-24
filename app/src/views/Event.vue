@@ -3,14 +3,17 @@
     <b-card
       class="text-center"
       :title="event.name"
-      :sub-title="'lugar: ' + event.date + ' Fecha: ' + event.place"
+      :sub-title="'lugar: ' + event.place + ' Fecha: ' + event.date"
     >
       <b-card-text>
         {{ event.category }}
       </b-card-text>
 
       <b-card-text>{{ event.body }}</b-card-text>
-      <div>
+      <div v-if="event.members == ''">
+        <h3>sin asitentes</h3>
+      </div>
+      <div v-else>
         <b-card
           border-variant="light"
           header="Miembros inscritos"

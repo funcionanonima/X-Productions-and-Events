@@ -3,12 +3,17 @@
     <b-button class="m-1" v-b-modal.event variant="outline-success"
       >Editar</b-button
     >
-    <b-modal id="event" title="Eventos" :hide-footer="true">
+    <b-modal
+      id="event"
+      title="Eventos"
+      :hide-footer="true"
+      ref="MemberEditModalRef"
+    >
       <div>
         <b-form>
           <b-form-group class="m-2" id="nameGroup" label-for="name">
             <b-form-input
-              v-model="this.event.name"
+              v-model="event.name"
               id="name"
               class="d-block"
               type="text"
@@ -73,7 +78,10 @@
             </b-form-select>
           </b-form-group>
           <div>
-            <b-button class="m-2" variant="outline-primary" @click="onUpdate()"
+            <b-button
+              class="m-2"
+              variant="outline-primary"
+              @click="onUpdate(event.id)"
               >Guardar</b-button
             >
           </div>
@@ -106,7 +114,7 @@ export default {
     },
     onUpdate() {
       this.$store.dispatch("updateEvent", this.event);
-      this.hideModal();
+      this.$refs["MemberEditModalRef"].hide();
     },
   },
   mounted() {

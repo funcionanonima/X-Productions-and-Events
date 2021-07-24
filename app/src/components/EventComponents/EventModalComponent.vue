@@ -109,7 +109,7 @@ export default {
   methods: {
     onSubmit() {
       this.$store.dispatch("createEvent", this.event);
-      this.$store.event = null;
+      // this.$store.event = null;
       this.$refs["eventModal"].hide();
     },
     hideModal() {

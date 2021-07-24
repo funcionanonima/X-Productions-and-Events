@@ -69,7 +69,7 @@ export default new Vuex.Store({
         })
     },
     addEvent: ({ commit }, eventId) => {
-      axios.get(`${baseUrl}/api/events/${eventId}`)
+      axios.get(`${baseUrl}/api/events/formated/${eventId}`)
         .then(response => {
           commit('SET_EVENT', response.data)
         })

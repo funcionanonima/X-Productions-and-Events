@@ -18,7 +18,7 @@ class EventListFormatedAPIView(GeneralListApiView):
 
 
 class EventCreateAPIView(generics.CreateAPIView):
-    serializer_class = EventSerializerFormated
+    serializer_class = EventSerializer
 
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
@@ -28,15 +28,22 @@ class EventCreateAPIView(generics.CreateAPIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class EventRetrieveAPIView(generics.RetrieveAPIView):
+class EventRetrieveFormatedAPIView(generics.RetrieveAPIView):
     serializer_class = EventSerializerFormated
 
     def get_queryset(self):
         return self.get_serializer().Meta.model.objects.filter(state=True)
 
 
+class EventRetrieveAPIView(generics.RetrieveAPIView):
+    serializer_class = EventSerializer
+
+    def get_queryset(self):
+        return self.get_serializer().Meta.model.objects.filter(state=True)
+
+
 class EventDestroyAPIView(generics.DestroyAPIView):
-    serializer_class = EventSerializerFormated
+    serializer_class = EventSerializer
 
     def get_queryset(self):
         return self.get_serializer().Meta.model.objects.filter(state=True)
@@ -52,7 +59,7 @@ class EventDestroyAPIView(generics.DestroyAPIView):
 
 
 class EventUpdateAPIView(generics.UpdateAPIView):
-    serializer_class = EventSerializerFormated
+    serializer_class = EventSerializer
 
     def get_queryset(self, pk):
         return self.get_serializer().Meta.model.objects.filter(state=True).filter(id=pk).first()
