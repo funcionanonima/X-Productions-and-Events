@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from apps.events.api.views.general_views import CategoryListAPIView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('cities/', include('apps.cities.api.urls')),
-    path('members/', include('apps.members.api.urls')),
-    path('categories/', include('apps.events.api.urls')),
-    path('events/', include('apps.events.api.urls')),
+    path('api/cities/', include('apps.cities.api.urls')),
+    path('api/members/', include('apps.members.api.urls')),
+    path('api/categories/', CategoryListAPIView.as_view(), name="categories"),
+    path('api/events/', include('apps.events.api.urls')),
 ]

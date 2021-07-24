@@ -2,7 +2,7 @@ from rest_framework.response import Response
 from rest_framework import generics, status
 
 from apps.base.api import GeneralListApiView
-from apps.events.api.serializers.general_serializers import CategorySerializer, EventSerializer
+from apps.events.api.serializers.general_serializers import CategorySerializer, EventSerializerFormated, EventSerializer
 
 
 class CategoryListAPIView(GeneralListApiView):
@@ -13,8 +13,12 @@ class EventListAPIView(GeneralListApiView):
     serializer_class = EventSerializer
 
 
+class EventListFormatedAPIView(GeneralListApiView):
+    serializer_class = EventSerializerFormated
+
+
 class EventCreateAPIView(generics.CreateAPIView):
-    serializer_class = EventSerializer
+    serializer_class = EventSerializerFormated
 
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
@@ -25,30 +29,30 @@ class EventCreateAPIView(generics.CreateAPIView):
 
 
 class EventRetrieveAPIView(generics.RetrieveAPIView):
-    serializer_class = EventSerializer
+    serializer_class = EventSerializerFormated
 
     def get_queryset(self):
         return self.get_serializer().Meta.model.objects.filter(state=True)
 
 
 class EventDestroyAPIView(generics.DestroyAPIView):
-    serializer_class = EventSerializer
+    serializer_class = EventSerializerFormated
 
     def get_queryset(self):
         return self.get_serializer().Meta.model.objects.filter(state=True)
 
     # softDelete, si no se aclara borra diretamente
-    def delete(self, pk=None):
-        member = self.get_queryset().filter(id=pk).first()
-        if member:
-            member.state = False
-            member.save()
+    def delete(self, request, pk=None):
+        event = self.get_queryset().filter(id=pk).first()
+        if event:
+            event.state = False
+            event.save()
             return Response({'message': 'Evento Borrada correctamente'}, status=status.HTTP_201_CREATED)
         return Response({'error': 'No existe Evento con estos datos'}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class EventUpdateAPIView(generics.UpdateAPIView):
-    serializer_class = EventSerializer
+    serializer_class = EventSerializerFormated
 
     def get_queryset(self, pk):
         return self.get_serializer().Meta.model.objects.filter(state=True).filter(id=pk).first()

@@ -3,7 +3,7 @@ from rest_framework import serializers
 from apps.members.models import Member
 
 
-class MemberSerializer(serializers.ModelSerializer):
+class MemberSerializerFormated(serializers.ModelSerializer):
     """
     1ra Forma: Setea la lista de objetos relacionados 
     born_place = CitySerializer()

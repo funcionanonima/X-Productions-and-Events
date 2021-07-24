@@ -24,9 +24,11 @@ class Event(BaseModel):
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE, verbose_name='Categoría')
     name = models.CharField('Nombre', max_length=60, blank=False, null=False)
-    date = models.DateTimeField()
+    date = models.DateField()
+    time = models.TimeField()
     place = models.ForeignKey(
         Cities, on_delete=models.CASCADE, verbose_name='Lugar')
+    body = models.TextField()
     members = models.ManyToManyField(Member, blank=True)
 
     class Meta:
