@@ -2,14 +2,23 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Members from '../views/Members.vue'
+import Event from '../views/Event.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
+    // events
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    // events_details
+    path: '/event/:id',
+    name: 'Event',
+    component: Event,
+    props: true
   },
   {
     path: '/members',

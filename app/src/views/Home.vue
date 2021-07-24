@@ -1,11 +1,15 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <div>
-      <b-button variant="success"> Button </b-button>
-    </div>
-  </div>
+  <event-list />
 </template>
 
 <script>
+import EventList from "../components/EventComponents/EventListComponent";
+export default {
+  components: {
+    EventList,
+  },
+};
 </script>
+
+<style>
+</style>
